@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Weekly Report - September 16, 2025</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .report-date {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .status-card {
+            margin: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .status-indicator {
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .status-details {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .label {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .value {
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        .trend-improving { color: #28a745; }
+        .trend-worsening { color: #dc3545; }
+        .trend-stable { color: #17a2b8; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 0 30px 30px;
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        .daily-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+
+        .daily-summary.safe { border-left: 4px solid #28a745; }
+        .daily-summary.hazardous { border-left: 4px solid #ffc107; }
+        .daily-summary.dangerous { border-left: 4px solid #dc3545; }
+
+        .distribution-bar {
+            display: flex;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .distribution-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+
+        .recommendations {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+        }
+
+        .recommendations ul {
+            margin-left: 20px;
+        }
+
+        .recommendations li {
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            opacity: 0.9;
+        }
+
+        .footer p {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .status-details {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+        
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌬️ AQI Weekly Report</h1>
+            <p class="report-date">Report Generated: September 16, 2025 at 09:12 AM</p>
+        </header>
+
+        <div class="status-card" style="border-left: 5px solid #6c757d;">
+            <div class="status-header">
+                <h2>Weekly Air Quality Status</h2>
+                <div class="status-indicator" style="background-color: #6c757d;">
+                    NO DATA AVAILABLE
+                </div>
+            </div>
+            <div class="status-details">
+                <div class="metric">
+                    <span class="label">Average AQI:</span>
+                    <span class="value">0</span>
+                </div>
+                <div class="metric">
+                    <span class="label">Trend:</span>
+                    <span class="value trend-unknown">Unknown</span>
+                </div>
+                <div class="metric">
+                    <span class="label">Total Readings:</span>
+                    <span class="value">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>📊 Weekly Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">Peak AQI</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">Lowest AQI</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">Avg/Day</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📈 Daily Trend</h3>
+                <div class="chart-container">
+                    <canvas id="dailyChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🗓️ Daily Summaries</h3>
+            <div class="daily-summaries">
+                <p>No daily data available.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🎯 Air Quality Distribution</h3>
+            <div class="distribution-chart">
+                <p>No distribution data available.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>📋 Health Recommendations</h3>
+            <div class="recommendations">
+                <p><strong>Based on the no data available air quality status:</strong></p><ul><li>Air quality is acceptable for outdoor activities</li><li>Perfect time for outdoor exercise and recreation</li><li>Windows can be opened for natural ventilation</li><li>No special precautions needed for healthy individuals</li></ul>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>This report is generated automatically from AQI sensor data.</p>
+            <p>Data based on EPA Air Quality Index standards.</p>
+            <p>Last updated: 09:12 AM</p>
+        </footer>
+    </div>
+
+    <script>
+        
+        // Daily Trend Chart
+        const dailyCtx = document.getElementById('dailyChart').getContext('2d');
+        new Chart(dailyCtx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Average AQI',
+                    data: [],
+                    borderColor: '#2c3e50',
+                    backgroundColor: 'rgba(44, 62, 80, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+        
+    </script>
+</body>
+</html>
